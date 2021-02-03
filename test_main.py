@@ -23,8 +23,8 @@ def client():
 
 
 def test_health(client):
-    # Verify test prevents bad deployment 
-    assert False
+    # Verify test prevents bad deployment
+    # assert False
 
     response = client.get('/')
     assert response.status_code == 200
