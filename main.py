@@ -61,6 +61,8 @@ def health():
     return jsonify("Healthy")
 
 # export TOKEN=`curl -d '{"email":"max.muster@gmail.com","password":"currentlySecret!"}' -H "Content-Type: application/json" -X POST localhost:8081/auth  | jq -r '.token'`
+# export TOKEN=`curl -d '{"email":"max.muster@gmail.com","password":"NotKnwon"}' -H "Content-Type: application/json" -X POST  a459988446b004d709ac9138bf9bc1af-578619550.eu-central-1.elb.amazonaws.com/auth  | jq -r '.token'`
+
 @APP.route('/auth', methods=['POST'])
 def auth():
     """
@@ -82,6 +84,7 @@ def auth():
     return jsonify(token=_get_jwt(user_data))
 
 # curl --request GET 'http://127.0.0.1:8081/contents' -H "Authorization: Bearer ${TOKEN}" | jq .
+# curl --request GET 'a459988446b004d709ac9138bf9bc1af-578619550.eu-central-1.elb.amazonaws.com/contents' -H "Authorization: Bearer ${TOKEN}" | jq
 @APP.route('/contents', methods=['GET'])
 def decode_jwt():
     """
